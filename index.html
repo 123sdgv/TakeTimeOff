@@ -2,15 +2,103 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>假条</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>假条模拟器</title>
+
+    <!-- iOS 添加到主屏幕专属配置（隐藏Safari地址栏，变身独立App） -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="假条模拟器">
+    
+    <!-- 桌面图标占位标签（由下方脚本自动生成超清复古图标注入） -->
+    <link id="apple-icon" rel="apple-touch-icon" href="">
+
+    <script>
+        // 自动绘制 Windows 95 复古风 iOS 桌面图标（512x512 超清分辨率）
+        (function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+
+            // 1. 经典 Win95 蓝绿桌面底色
+            ctx.fillStyle = '#008080';
+            ctx.fillRect(0, 0, 512, 512);
+
+            // 2. 内部复古微缩窗口外框（灰色立体凸起）
+            const wx = 56, wy = 64, ww = 400, wh = 384;
+            ctx.fillStyle = '#c0c0c0';
+            ctx.fillRect(wx, wy, ww, wh);
+
+            // 窗口 3D 高光与阴影边框
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(wx, wy, ww, 8);
+            ctx.fillRect(wx, wy, 8, wh);
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(wx, wy + wh - 8, ww, 8);
+            ctx.fillRect(wx + ww - 8, wy, 8, wh);
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(wx + 8, wy + wh - 16, ww - 16, 8);
+            ctx.fillRect(wx + ww - 16, wy + 8, 8, wh - 16);
+
+            // 3. 顶部深蓝渐变标题栏
+            const grad = ctx.createLinearGradient(wx + 16, 0, wx + ww - 32, 0);
+            grad.addColorStop(0, '#000080');
+            grad.addColorStop(1, '#1084d0');
+            ctx.fillStyle = grad;
+            ctx.fillRect(wx + 16, wy + 16, ww - 32, 56);
+
+            // 标题栏文字与右上角关闭小按钮
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.fillText('假条.exe', wx + 30, wy + 54);
+
+            ctx.fillStyle = '#c0c0c0';
+            ctx.fillRect(wx + ww - 64, wy + 24, 40, 40);
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 30px monospace';
+            ctx.fillText('×', wx + ww - 53, wy + 54);
+
+            // 4. 中央白色内凹纸张区域
+            const sx = wx + 28, sy = wy + 90, sw = ww - 56, sh = wh - 118;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(sx, sy, sw, sh);
+            // 内凹阴影
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(sx, sy, sw, 6);
+            ctx.fillRect(sx, sy, 6, sh);
+
+            // 5. 纸张中央超大「假」字
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 170px "SimSun", "Songti SC", serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('假', sx + sw / 2 - 15, sy + sh / 2 + 5);
+
+            // 6. 右下角红色「准」字复古印章
+            ctx.save();
+            ctx.translate(sx + sw - 75, sy + sh - 65);
+            ctx.rotate(-0.18);
+            ctx.strokeStyle = '#d91e18';
+            ctx.lineWidth = 8;
+            ctx.strokeRect(-44, -44, 88, 88);
+            ctx.fillStyle = '#d91e18';
+            ctx.font = 'bold 54px "SimSun", "Songti SC", serif';
+            ctx.fillText('准', 0, 4);
+            ctx.restore();
+
+            // 将生成的图标注入给 iOS 识别
+            document.getElementById('apple-icon').href = canvas.toDataURL('image/png');
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="win95-window">
         <!-- 顶部深蓝色标题栏 -->
         <div class="title-bar">
-            <div class="title-bar-text">📄 假条.exe</div>
+            <div class="title-bar-text">📄 假条模拟器.exe</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize">_</button>
                 <button aria-label="Maximize">□</button>
